@@ -1,33 +1,15 @@
 const http = require('http')
 const fs = require('fs')
-const PORT = 3000
 
-const filePath = process.argv[2]
-
-if (!filePath) {
-  console.error(
-    'Error: No file path provided. Please specify a file path as an argument.'
-  )
-  process.exit(1)
-}
-
+// Create an HTTP server
 const server = http.createServer((req, res) => {
-  const method = req.method
-  if (method === 'GET') {
-    fs.readFile(filePath, 'utf-8', (err, data) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' })
-        res.end(`Error: File not found at path ${filePath}`)
-      }
+  const filePath = process.argv[2]
 
-      res.writeHead(200, { 'Content-Type': 'text/plain' })
-      res.end(data)
-    })
-  }
+  res.writeHead(200, { 'Content-Type': 'text/plain' })
+  res.end('Hello, World!\n')
 })
 
+const PORT = 3000
 server.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`Serving file: ${filePath}`);
+  console.log(`Server is listening on port ${PORT}`)
 })
-
