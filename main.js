@@ -11,7 +11,6 @@ if (!filePath) {
   process.exit(1)
 }
 
-// TODO: Create an HTTP server
 const server = http.createServer((req, res) => {
   const method = req.method
   if (method === 'GET') {
@@ -27,10 +26,8 @@ const server = http.createServer((req, res) => {
   }
 })
 
-// TODO: Listen on port 3000
 server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   console.log(`Serving file: ${filePath}`);
 })
 
-// DO NOT EDIT BELOW THIS LINE (Uncomment it once you are done with your code)
